@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en-in">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        body{
+            background-color: black;
+        }
+        header{
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            font-family: Arial;
+        }
+        .bi-spotify{
+            font-size: 35px;
+            margin-left: 20px;
+            color: white;
+        }
+        .bi-house-door-fill{
+            border: 1px solid ;
+            border-radius: 20px;
+            color: white;
+            font-size: 20px;
+            padding: 10px;
+            background-color: rgb(48, 48, 48);
+        }
+        .search-bar{
+            background-color: rgb(48, 48, 48);
+            display: inline-block;
+            width: 500px;
+            border-radius: 20px;
+            padding: 10px;
+            margin-left: 10px;
+            font-size: 18px;
+            color: rgb(192, 190, 190);
+        }
+        .bi-speaker{
+            float: right;
+            border-left: 1px solid white;
+            padding-left: 10px;
+        }
+        .btn-signup{
+            border: 1px solid black;
+            border-radius: 20px;
+            padding: 10px;
+            color: rgb(192, 190, 190);
+            margin: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .btn-login{
+            padding: 15px;
+            color: black;
+            display: inline-block;
+            border-radius: 30px;
+            background-color: white;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        section{
+            display: grid;
+            grid-template-columns: 3fr 9fr;
+            gap: 10px;
+        }
+        .nav-bar{
+            background-color: rgb(24, 24, 24);
+            border-radius: 10px;
+        }
+        .library{
+            display:flex;
+            justify-content: space-between;
+            padding: 20px;
+            color: rgb(156, 152, 152);
+            font-family: Arial;
+        }
+        .library-left{
+            font-size: 16px;
+        }
+        .bi-border-width{
+            font-size: 18px;
+            margin-right: 10px;
+        }
+        .bi-plus{
+            font-size: 26px;
+        }
+        .playlist{
+            border: 1px solid rgb(105, 105, 105);
+            margin-bottom: 50px;
+            margin-left: 5px;
+            margin-right: 5px;
+            border-radius: 20px;;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(66, 64, 64);
+        }
+        .create{
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            font-family: Arial;
+            margin-bottom: 5px;
+        }
+        .easy{
+            font-size: 14px;
+            color: white;
+            font-family: Arial;
+            margin-bottom: 20px;
+        }
+        .btn-create-playlist{
+            display: inline-block;
+            border-radius: 20px;
+            padding: 10px;
+            background-color: white;
+            width: 115px;
+            text-align: center;
+            font-family: Arial;
+            font-size:12px;
+            font-weight: bold;
+        }
+        .options{
+            display: flex;
+            flex-direction: column;
+            margin-top: 30px;
+        }
+        .options span{
+            margin-bottom: 10px;
+            margin-left: 20px;
+            font-size: 12px;
+            color: rgb(162, 161, 161);
+        }
+        .options span:third-child{
+            font-size: 14px;
+            color: white;
+        }
+        .language{
+           
+            margin-top: 40px;
+            margin-left: 30px;
+        }
+        .bi-globe2{
+            border: 1px solid white;
+            border-radius: 20px;
+            padding: 10px;
+            color: white;
+        }
+        main{
+            background-color: rgb(24, 24, 24);
+            border-radius: 10px;
+            overflow: auto;
+            height: 650px;
+        }
+        .content{
+            display:flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        .main-title{
+            font-family: Arial;
+            font-size: 24px;
+            color: white;
+            font-weight: bold;
+        }
+        .show{
+            font-size: 16px;
+            color: white;
+            font-family: Arial;
+        }
+        .card-artists{
+            display: grid;
+            grid-template-columns: 1.5fr 1.5fr 1.5fr 1.5fr 1.5fr 1.5fr 1.5fr;
+            padding: 20px;
+        }
+        .card-artists div{
+            margin-right: 15px;
+        }
+        .card-body{
+            margin-top:5px;
+            font-family: Arial;
+            font-size: 16px;
+            color: white;
+        }
+        .card-footer{
+            margin-top: 5px;
+            color: rgb(177, 173, 173);
+        }
+        .album{
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        footer{
+            display: grid;
+            grid-template-columns: 1.8fr 1.8fr 1.8fr 1.8fr 1.8fr;
+            margin-top: 50px;
+            padding: 10px;
+            margin-bottom: 60px;
+        }
+        footer div{
+            margin-left: 20px;
+        }
+        .footer-title{
+            font-size: 16px;
+            color: white;
+            font-family: Arial;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .footer span{
+            display: block;
+        }
+        .footer-subtitle{
+            font-size: 14px;
+            color: rgb(158, 158, 158);
+            font-family: Arial;
+            margin-top: 5px;
+        }
+        .footer-icons{
+            margin-left: 70px;
+        }
+        .bi-instagram{
+            display: inline-block;
+            padding: 10px;
+            color: white;
+            border-radius: 20px;
+            background-color: rgb(61, 60, 60);
+            margin-right: 10px;
+        }
+        .bi-twitter-x{
+            display: inline-block;
+            padding: 10px;
+            color: white;
+            border-radius: 20px;
+            background-color: rgb(61, 60, 60);
+            margin-right: 10px;
+        }
+        .bi-facebook{
+            display: inline-block;
+            padding: 12px;
+            color: white;
+            border-radius: 20px;
+            background-color: rgb(61, 60, 60);
+        }
+        .footer-2{
+            border-top: 0.5px solid gray;
+        }
+         .footer-title-2{
+            margin-top: 40px;
+            margin-left: 40px;
+        }
+        .footer-title-2 span{
+            color: rgb(127, 126, 126);
+            font-family: Arial;
+        }
+        .bi-c-circle{
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <span class="bi bi-spotify"></span>
+        </div>
+        <div>
+            <span class="bi bi-house-door-fill"></span>
+            <span class="search-bar"><span class="bi bi-search"></span> What do you want to listen? <span class="bi bi-speaker"></span></span>
+        </div>
+        <div>
+            <span class="btn-signup">Sign Up</span>
+            <span class="btn-login">Log In</span>
+        </div>
+    </header>
+    <section>
+        <nav class="nav-bar">
+            <div class="library">
+                <span class="library-left"><span class="bi bi-border-width"></span> Your Library</span>
+                <span class="bi bi-plus"></span>
+            </div>
+            <div class="playlist">
+                <span class="create"> Create Your first Playlist</span>
+                <span class="easy"> It's easy, we'll help you</span>
+                <span class="btn-create-playlist"> Create Playlist </span>
+            </div>
+            <div class="playlist">
+                <span class="create"> Let's find some podcasts to follow</span>
+                <span class="easy"> We'll keep you updated on new episodes</span>
+                <span class="btn-create-playlist"> Browse Podcasts</span>
+            </div>
+            <div class="options">
+                <span> 
+                    <span>Legal</span>
+                    <span>safety & Privacy Center</span>
+                    <span>Privacy Policy</span>
+                </span>
+                <span>
+                    <span>Cookies</span>
+                    <span>About Ads</span>
+                    <span>Accessibility</span>
+                </span>
+                <span>
+                    <span class="cookies">Cookies</span>
+                </span>
+            </div>
+            <div class="language">
+                <span class="bi bi-globe2"> English</span>
+            </div>
+        </nav>
+        <main>
+            <div class="content">
+                <span class="main-title">Popular artists</span>
+                <span class="show">Show all</span>
+            </div>
+            <div class="card-artists">
+                <div>
+                    <div class="card-header">
+                        <img src="./images/pritam.png" width="150" height="150">
+                    </div>
+                    <div class="card-body">
+                        <span>Pritam</span>
+                    </div>
+                    <div class="card-footer">
+                        <span>Artist</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="card-header">
+                        <img src="./images/rahman.png" width="165" height="150">
+                    </div>
+                    <div class="card-body">
+                        <span>A.R. Rahman</span>
+                    </div>
+                    <div class="card-footer">
+                        <span>Artist</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="card-header">
+                        <img src="./images/sachin-jigar.png" width="150" height="150">
+                    </div>
+                    <div class="card-body">
+                        <span>Sachin-Jigar</span>
+                    </div>
+                    <div class="card-footer">
+                        <span>Artist</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="card-header">
+                        <img src="./images/arijit.png"  width="165" height="150">
+                    </div>
+                    <div class="card-body">
+                        <span>Arijit Singh</span>
+                    </div>
+                    <div class="card-footer">
+                        <span>Artist</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="card-header">
+                        <img src="./images/anirudh.png" width="150" height="150">
+                    </div>
+                    <div class="card-body">
+                        <span>Anirudh Ravichander</span>
+                    </div>
+                    <div class="card-footer">
+                        <span>Artist</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="card-header">
+                        <img src="./images/atif-aslam.jpg" width="150" height="150">
+                    </div>
+                    <div class="card-body">
+                        <span>Atif Aslam</span>
+                    </div>
+                    <div class="card-footer">
+                        <span>Artist</span>
+                    </div>
+                </div>
+            </div>
+            <div class="content-2">
+                <div class="album">
+                    <span class="main-title">Popular Albums</span>
+                    <span class="show">Show all</span>
+                </div>
+                <div class="card-artists">
+                    <div>
+                        <div class="card-header">
+                            <img src="./images/glory.png" width="150" height="150">
+                        </div>
+                        <div class="card-body">
+                            <span>Glory</span>
+                        </div>
+                        <div class="card-footer">
+                            <span>Yo Yo Honey Singh</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card-header">
+                            <img src="./images/ashiqui.png" width="150" height="150">
+                        </div>
+                        <div class="card-body">
+                            <span>Aashiqui 2</span>
+                        </div>
+                        <div class="card-footer">
+                            <span>Mithoon,Ankit Tiwari,Jeet Gannguli</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card-header">
+                            <img src="./images/jtmh.png" width="150" height="150">
+                        </div>
+                        <div class="card-body">
+                            <span>Jo Tum Mere Ho</span>
+                        </div>
+                        <div class="card-footer">
+                            <span>Anuv Jain</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card-header">
+                            <img src="./images/making-memories.png" width="150" height="150">
+                        </div>
+                        <div class="card-body">
+                            <span>Making Memories</span>
+                        </div>
+                        <div class="card-footer">
+                            <span>Karan Aujla,Ikky</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card-header">
+                            <img src="./images/yjhd.png" width="150" height="150">
+                        </div>
+                        <div class="card-body">
+                            <span>Yeh Jawaani hai Deewani</span>
+                        </div>
+                        <div class="card-footer">
+                            <span>Pritam</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card-header">
+                            <img src="./images/akr.png" width="150" height="150">
+                        </div>
+                        <div class="card-body">
+                            <span>Aj Ki Raat(From "Stree 2")</span>
+                        </div>
+                        <div class="card-footer">
+                            <span>Sachin-Jigar,Amitabh</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <div class="footer">
+                    <span class="footer-title">Company</span>
+                    <span class="footer-subtitle">About</span>
+                    <span class="footer-subtitle">Jobs</span>
+                    <span class="footer-subtitle">For the Record</span>
+                </div>
+                <div class="footer">
+                    <span class="footer-title">Communication</span>
+                    <span class="footer-subtitle">For Artists</span>
+                    <span class="footer-subtitle">Developers</span>
+                    <span class="footer-subtitle">Advertising</span>
+                    <span class="footer-subtitle">Investors</span>
+                    <span class="footer-subtitle">Vendors</span>
+                </div>
+                <div class="footer">
+                    <span class="footer-title">Useful Links</span>
+                    <span class="footer-subtitle">Support</span>
+                    <span class="footer-subtitle">Free Mobile App</span>
+                </div>
+                <div class="footer">
+                    <span class="footer-title">Spotify Plans</span>
+                    <span class="footer-subtitle">Premium Individual</span>
+                    <span class="footer-subtitle">Premium Duo</span>
+                    <span class="footer-subtitle">Premium Family</span>
+                    <span class="footer-subtitle">Premium Student</span>
+                    <span class="footer-subtitle">Spotify Free</span>
+                </div>
+                <div class="footer-icons">
+                    <span class="bi bi-instagram"></span>
+                    <span class="bi bi-twitter-x"></span>
+                    <span class="bi bi-facebook"></span>
+                </div>
+            </footer>
+            <footer class="footer-2">
+                <div class="footer-title-2">
+                    <span><span class="bi bi-c-circle"></span> 2024 Spotify AB</span>
+                </div>
+            </footer>
+        </main>
+    </section>
+</body>
+</html>
